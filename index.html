@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101a34">
+<meta name="description" content="Шинэ Үе сургуулийн Хөвгүүдийн зөвлөл — сурагчдын санааг бодит үйл хэрэг болгоё.">
+<title>Шинэ Үе | Хөвгүүдийн зөвлөл</title>
+<style>
+:root{--navy:#101a34;--blue:#4b72ff;--cyan:#8be8e0;--paper:#f6f7fb;--ink:#18213b;--muted:#68718a;--line:#e4e8f1;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(16,26,52,.96);backdrop-filter:blur(14px);color:white;border-bottom:1px solid #ffffff20}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.2px}.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:var(--navy);font-weight:900;font-size:18px}.navlinks{display:flex;align-items:center;gap:24px;font-size:14px;color:#e1e7ff}.navlinks a:hover{color:var(--cyan)}.navbtn{display:none;background:transparent;border:1px solid #ffffff55;color:white;border-radius:10px;padding:8px 12px;font-size:20px}
+.hero{position:relative;overflow:hidden;background:var(--navy);color:white;padding:92px 0 100px}.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}.hero:before{width:440px;height:440px;background:#4b72ff35;right:-100px;top:-170px}.hero:after{width:260px;height:260px;background:#8be8e025;right:24%;bottom:-200px}.hero-grid{position:relative;display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffffff35;background:#ffffff0c;border-radius:999px;padding:7px 13px;font-size:13px;color:var(--cyan);font-weight:700}.dot{width:7px;height:7px;background:var(--cyan);border-radius:50%}h1{font-size:clamp(42px,6vw,70px);line-height:1.05;letter-spacing:-2px;margin:22px 0}.hero p{max-width:590px;color:#d0d8ef;font-size:18px}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}.btn{display:inline-flex;justify-content:center;align-items:center;border:0;border-radius:13px;padding:13px 19px;font-weight:800;font-size:14px;cursor:pointer;transition:transform .2s,opacity .2s}.btn:hover{transform:translateY(-2px)}.primary{background:var(--cyan);color:var(--navy)}.secondary{color:white;border:1px solid #ffffff55;background:#ffffff0c}.hero-card{position:relative;border:1px solid #ffffff2c;background:linear-gradient(145deg,#ffffff18,#ffffff08);border-radius:28px;padding:28px;box-shadow:0 25px 80px #0002}.hero-card .big{font-size:70px;line-height:1}.hero-card h3{font-size:23px;margin:14px 0 6px}.hero-card p{font-size:15px;margin:0;color:#cbd4ed}.mini-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.stat{border-radius:16px;background:#ffffff0c;padding:15px}.stat strong{display:block;font-size:20px;color:var(--cyan)}.stat span{font-size:12px;color:#cbd4ed}
+section{padding:76px 0}.section-head{max-width:680px;margin-bottom:32px}.kicker{color:#4d68df;text-transform:uppercase;font-size:12px;font-weight:900;letter-spacing:1.5px}.section-head h2{font-size:clamp(30px,4vw,42px);line-height:1.15;letter-spacing:-1px;margin:8px 0 12px}.section-head p{color:var(--muted);margin:0}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}.panel{background:white;border:1px solid var(--line);border-radius:22px;padding:28px}.panel h3{margin:0 0 10px;font-size:21px}.panel p{color:var(--muted);margin:0}.values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}.value{padding:15px;border-radius:15px;background:#f5f7ff}.value b{display:block;margin-bottom:3px}.value span{font-size:13px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.initiative{background:white;border:1px solid var(--line);border-radius:22px;padding:24px;transition:transform .2s,box-shadow .2s}.initiative:hover{transform:translateY(-4px);box-shadow:0 18px 40px #18213b0c}.emoji{width:52px;height:52px;display:grid;place-items:center;background:#edf1ff;border-radius:16px;font-size:25px;margin-bottom:20px}.initiative h3{font-size:19px;margin:0 0 8px}.initiative p{font-size:14px;color:var(--muted);margin:0}.tag{display:inline-block;margin-top:17px;border-radius:999px;padding:5px 10px;background:#eaf9f7;color:#176d69;font-size:11px;font-weight:800}
+.activities{background:#edf1fa}.activity-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:26px}.activity-feature{background:var(--navy);color:white;border-radius:24px;padding:30px}.activity-feature p{color:#cbd4ed}.activity-list{display:grid;gap:12px}.activity{display:flex;gap:16px;align-items:flex-start;background:white;border:1px solid var(--line);border-radius:17px;padding:18px}.activity .emoji{flex-shrink:0;width:46px;height:46px;margin:0}.activity h3{margin:0 0 3px;font-size:16px}.activity p{margin:0;color:var(--muted);font-size:14px}
+.form-wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:start}.form-intro{background:var(--navy);color:white;border-radius:24px;padding:30px}.form-intro p{color:#cbd4ed}.form-intro .small{font-size:13px;color:#aeb9d8}.suggestion-form{background:white;border:1px solid var(--line);border-radius:24px;padding:28px}.field{display:grid;gap:7px;margin-bottom:16px}.field label{font-size:13px;font-weight:800}.field input,.field select,.field textarea{width:100%;font:inherit;border:1px solid #dce2ee;background:#fbfcff;border-radius:12px;padding:12px 13px;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4b72ff18}.field textarea{min-height:120px;resize:vertical}.form-note{font-size:12px;color:var(--muted);margin:12px 0 0}.notice{display:none;padding:13px 15px;border-radius:12px;background:#eaf9f1;color:#176343;font-size:14px;margin-top:14px}.notice.show{display:block}
+footer{background:#0b1226;color:#cbd4ed;padding:30px 0}.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center}.footer-row small{color:#8f9bbd}.footer-links{display:flex;gap:18px;font-size:13px}
+@media(max-width:780px){.navlinks{display:none;position:absolute;top:76px;left:0;right:0;background:var(--navy);padding:18px 5%;flex-direction:column;align-items:flex-start;border-top:1px solid #ffffff20}.navlinks.open{display:flex}.navbtn{display:block}.hero{padding:64px 0 72px}.hero-grid,.about-grid,.activity-grid,.form-wrap{grid-template-columns:1fr}.hero-grid{gap:34px}.hero-card{max-width:520px}.cards{grid-template-columns:1fr 1fr}.footer-row{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){section{padding:56px 0}.cards{grid-template-columns:1fr}.values{grid-template-columns:1fr 1fr}h1{letter-spacing:-1.5px}.hero p{font-size:16px}.panel,.suggestion-form{padding:22px}.footer-links{flex-wrap:wrap}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="Нүүр хуудас"><span class="logo">ШҮ</span><span>ШИНЭ ҮЕ <span style="display:block;font-size:11px;font-weight:600;color:#aeb9d8">ХӨВГҮҮДИЙН ЗӨВЛӨЛ</span></span></a>
+    <button class="navbtn" id="navbtn" aria-label="Цэс нээх" aria-expanded="false">☰</button>
+    <nav class="navlinks" id="navlinks">
+      <a href="#about">Бидний тухай</a><a href="#initiatives">Санаачилгууд</a><a href="#activities">Үйл ажиллагаа</a><a href="#suggest" class="btn primary" style="padding:9px 14px;color:#101a34">Санаа илгээх ↗</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> СУРАГЧДЫН ДУУ ХООЛОЙ</span>
+      <h1>Чиний санаа.<br>Бидний үйлдэл.<br><span style="color:var(--cyan)">Бидний сургууль.</span></h1>
+      <p>Шинэ Үе сургуулийн сурагчдын санаа бодлыг сонсож, хамтдаа илүү эерэг, идэвхтэй, нээлттэй сургуулийн орчныг бүтээцгээе.</p>
+      <div class="actions"><a class="btn primary" href="#suggest">Санаагаа хуваалцах ↗</a><a class="btn secondary" href="#about">Бидний тухай</a></div>
+    </div>
+    <div class="hero-card">
+      <div class="big">🤝</div><h3>Нэг баг. Нэг зорилго.</h3>
+      <p>Сурагч бүрийн санал үнэ цэнтэй. Бид сонсож, хамтарч, бодит өөрчлөлт хийхийн төлөө ажиллана.</p>
+      <div class="mini-stats"><div class="stat"><strong>Сонсох</strong><span>Сурагчдын санал</span></div><div class="stat"><strong>Хамтрах</strong><span>Нэгдсэн санаачилга</span></div></div>
+    </div>
+  </div>
+</section>
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><span class="kicker">БИДНИЙ ТУХАЙ</span><h2>Сурагчдаас эхлэх өөрчлөлт</h2><p>Хөвгүүдийн зөвлөл бол сурагчдын оролцоо, манлайлал, хамтын ажиллагааг дэмжих талбар юм.</p></div>
+    <div class="about-grid">
+      <div class="panel"><h3>Бидний зорилго</h3><p>Сургуулийн амьдралыг сурагч бүрт илүү таатай болгохын тулд санааг сонсож, асуудлыг хамтдаа тодорхойлж, хэрэгжих боломжтой шийдлүүдийг санал болгоно.</p><div class="values"><div class="value"><b>🤝 Хүндлэл</b><span>Бие биеэ сонсож, дэмжинэ.</span></div><div class="value"><b>💡 Санаачилга</b><span>Шинэ санааг туршиж үзнэ.</span></div><div class="value"><b>🧭 Хариуцлага</b><span>Амласнаа хэрэгжүүлэхийг зорино.</span></div><div class="value"><b>🌱 Хөгжил</b><span>Алдаанаасаа суралцана.</span></div></div></div>
+      <div class="panel" style="background:linear-gradient(145deg,#e9efff,#f7fbff)"><div style="font-size:42px">🎯</div><h3>Бид юуг эрхэмлэдэг вэ?</h3><p>Бид зөвхөн арга хэмжээ зохион байгуулах бус, сурагчдын оролцоог нэмэгдүүлж, санаа бодлыг нь бодит ажил болгохыг зорьдог.</p><ul style="padding-left:20px;color:#4e5872"><li>Нээлттэй харилцаа</li><li>Эерэг, аюулгүй орчин</li><li>Багийн ажиллагаа</li><li>Бодит үр дүн</li></ul></div>
+    </div>
+  </div>
+</section>
+<section id="initiatives" style="background:white">
+  <div class="wrap">
+    <div class="section-head"><span class="kicker">САНААЧИЛГУУД</span><h2>Хамтдаа хийж болох зүйлс</h2><p>Эдгээр нь жишээ санаачилгууд. Сурагчдын санал болон сургуулийн боломжид тулгуурлан өөрчилж болно.</p></div>
+    <div class="cards">
+      <article class="initiative"><div class="emoji">🌿</div><h3>Цэвэр, тав тухтай орчин</h3><p>Сургуулийн орчныг цэвэр, эмх цэгцтэй байлгах жижиг алхмуудыг хамтдаа хэрэгжүүлэх.</p><span class="tag">СУРГУУЛИЙН ОРЧИН</span></article>
+      <article class="initiative"><div class="emoji">🏀</div><h3>Спорт ба хамтын ажиллагаа</h3><p>Сурагчдыг нэгтгэх нөхөрсөг тэмцээн, багийн тоглоом, идэвхтэй амралтын санаа гаргах.</p><span class="tag">ИДЭВХТЭЙ ОРОЛЦОО</span></article>
+      <article class="initiative"><div class="emoji">💬</div><h3>Сурагчдын саналын булан</h3><p>Сурагчдын бодол, хүсэлт, шинэ санааг тогтмол сонсох нээлттэй боломж бүрдүүлэх.</p><span class="tag">САНАЛ САНААЧИЛГА</span></article>
+    </div>
+  </div>
+</section>
+<section class="activities" id="activities">
+  <div class="wrap">
+    <div class="section-head"><span class="kicker">ҮЙЛ АЖИЛЛАГАА</span><h2>Санаанаас үйлдэл рүү</h2><p>Бидний үйл ажиллагааны жишиг чиглэлүүд.</p></div>
+    <div class="activity-grid">
+      <div class="activity-feature"><div style="font-size:42px">🚀</div><h3 style="font-size:24px">Санаачилга бүр чухал</h3><p>Сайн санаа заавал том байх албагүй. Хамтдаа хийсэн жижиг өөрчлөлт ч сургуулийн өдөр тутмын амьдралыг сайжруулж чадна.</p><a class="btn primary" href="#suggest">Санаа илгээх ↗</a></div>
+      <div class="activity-list">
+        <div class="activity"><div class="emoji">📣</div><div><h3>Сурагчдын дуу хоолой</h3><p>Санал хүсэлтийг сонсож, ямар асуудалд анхаарахыг тодорхойлох.</p></div></div>
+        <div class="activity"><div class="emoji">🧑‍🤝‍🧑</div><div><h3>Багийн ажил</h3><p>Сурагчид, багш нар болон сургуулийн хамт олонтой хамтран ажиллах.</p></div></div>
+        <div class="activity"><div class="emoji">📌</div><div><h3>Үр дүнгээ хуваалцах</h3><p>Хэрэгжүүлсэн ажил, дараагийн алхмуудын талаар мэдээлэх.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="suggest">
+  <div class="wrap">
+    <div class="section-head"><span class="kicker">САНАЛ ИЛГЭЭХ</span><h2>Чамд ямар санаа байна вэ?</h2><p>Сургуулиа илүү сайн болгох санаагаа хуваалцаарай.</p></div>
+    <div class="form-wrap">
+      <div class="form-intro"><div style="font-size:42px">💌</div><h3 style="font-size:25px;margin:10px 0">Чиний санал чухал.</h3><p>Бидний зорилго бол сурагчдын санааг сонсож, боломжтой шийдлүүдийг хамтдаа олох юм.</p><p class="small">Нууцлалын сануулга: энэ хувилбарын маягт мэдээллийг серверт хадгалахгүй, зөвлөл рүү автоматаар илгээхгүй. Бодитоор хүлээн авахын тулд тусдаа маягттай холбох шаардлагатай.</p></div>
+      <form class="suggestion-form" id="suggestionForm">
+        <div class="field"><label for="name">Нэр (заавал биш)</label><input id="name" name="name" maxlength="80" placeholder="Нэрээ бичнэ үү"></div>
+        <div class="field"><label for="category">Саналын төрөл</label><select id="category" name="category"><option>Сургуулийн орчин</option><option>Спорт, арга хэмжээ</option><option>Сурагчдын оролцоо</option><option>Сайн дурын ажил</option><option>Бусад</option></select></div>
+        <div class="field"><label for="idea">Санаагаа бичнэ үү *</label><textarea id="idea" name="idea" maxlength="2000" required placeholder="Ямар өөрчлөлт хийхийг хүсэж байна вэ?"></textarea></div>
+        <button class="btn primary" type="submit">Саналын ноорог үүсгэх ↗</button>
+        <div class="notice" id="notice" role="status"></div>
+        <p class="form-note">Одоогоор энэ товч зөвхөн ноорог үүсгэнэ. Мэдээллийг илгээх, хадгалах үйлчилгээ холбоогүй.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap footer-row"><div><div class="brand"><span class="logo">ШҮ</span><span>ШИНЭ ҮЕ — ХӨВГҮҮДИЙН ЗӨВЛӨЛ</span></div><small>Сурагчдын санаа. Хамтын үйлдэл.</small></div><div class="footer-links"><a href="#about">Бидний тухай</a><a href="#initiatives">Санаачилгууд</a><a href="#suggest">Санал илгээх</a></div></div></footer>
+<script>
+const navbtn=document.getElementById('navbtn'),navlinks=document.getElementById('navlinks');
+navbtn.addEventListener('click',()=>{const open=navlinks.classList.toggle('open');navbtn.setAttribute('aria-expanded',String(open));navbtn.textContent=open?'✕':'☰'});
+navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navlinks.classList.remove('open');navbtn.setAttribute('aria-expanded','false');navbtn.textContent='☰'}));
+document.getElementById('suggestionForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('name').value.trim()||'Нэр өгөөгүй';const category=document.getElementById('category').value;const idea=document.getElementById('idea').value.trim();const draft=`ШИНЭ ҮЕ СУРГУУЛИЙН ХӨВГҮҮДИЙН ЗӨВЛӨЛД\nНэр: ${name}\nТөрөл: ${category}\nСанал: ${idea}`;const notice=document.getElementById('notice');notice.textContent='Ноорог бэлэн боллоо. Доорх товчоор хуулж аваад зөвлөлд өөр сувгаар илгээнэ үү.';notice.classList.add('show');let old=document.getElementById('copyDraft');if(old)old.remove();const b=document.createElement('button');b.type='button';b.id='copyDraft';b.className='btn secondary';b.style.cssText='margin-top:10px;background:#101a34';b.textContent='Ноорог хуулах';b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(draft);b.textContent='Хуулагдлаа ✓'}catch{const ta=document.createElement('textarea');ta.value=draft;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();b.textContent='Хуулагдлаа ✓'}});notice.after(b);});
+</script>
+</body>
+</html>
