@@ -81,14 +81,15 @@ footer{background:#0b1226;color:#cbd4ed;padding:30px 0}.footer-row{display:flex;
   <div class="wrap">
     <div class="section-head"><span class="kicker">САНАЛ ИЛГЭЭХ</span><h2>Чамд ямар санаа байна вэ?</h2><p>Сургуулиа илүү сайн болгох санаагаа хуваалцаарай.</p></div>
     <div class="form-wrap">
-      <div class="form-intro"><div style="font-size:42px">💌</div><h3 style="font-size:25px;margin:10px 0">Чиний санал чухал.</h3><p>Бидний зорилго бол сурагчдын санааг сонсож, боломжтой шийдлүүдийг хамтдаа олох юм.</p><p class="small">Нууцлалын сануулга: энэ хувилбарын маягт мэдээллийг серверт хадгалахгүй, зөвлөл рүү автоматаар илгээхгүй. Бодитоор хүлээн авахын тулд тусдаа маягттай холбох шаардлагатай.</p></div>
-      <form class="suggestion-form" id="suggestionForm">
-        <div class="field"><label for="name">Нэр (заавал биш)</label><input id="name" name="name" maxlength="80" placeholder="Нэрээ бичнэ үү"></div>
+      <div class="form-intro"><div style="font-size:42px">💌</div><h3 style="font-size:25px;margin:10px 0">Чиний санал чухал.</h3><p>Бидний зорилго бол сурагчдын санааг сонсож, боломжтой шийдлүүдийг хамтдаа олох юм.</p><p class="small">Илгээсэн санал манай mail дээр хадгалагдана.</p></div>
+      <form class="suggestion-form" id="suggestionForm" name="feedback" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="feedback">
+        <div class="field"><label for="name">Нэр (заавал биш)</label><input id="name" name="name" type="text" maxlength="80" placeholder="Нэрээ бичнэ үү"></div>
         <div class="field"><label for="category">Саналын төрөл</label><select id="category" name="category"><option>Сургуулийн орчин</option><option>Спорт, арга хэмжээ</option><option>Сурагчдын оролцоо</option><option>Сайн дурын ажил</option><option>Бусад</option></select></div>
         <div class="field"><label for="idea">Санаагаа бичнэ үү *</label><textarea id="idea" name="idea" maxlength="2000" required placeholder="Ямар өөрчлөлт хийхийг хүсэж байна вэ?"></textarea></div>
-        <button class="btn primary" type="submit">Саналын ноорог үүсгэх ↗</button>
-        <div class="notice" id="notice" role="status"></div>
-        <p class="form-note">Одоогоор энэ товч зөвхөн ноорог үүсгэнэ. Мэдээллийг илгээх, хадгалах үйлчилгээ холбоогүй.</p>
+        <button class="btn primary" id="submitButton" type="submit">Санал илгээх ↗</button>
+        <div class="notice" id="notice" role="status" aria-live="polite"></div>
+        <p class="form-note">Илгээсний дараа санал манай mail хаяг Forms дээр бүртгэгдэнэ. Нууц мэдээлэл болон хувийн мэдээлэл бүү оруулаарай.</p>
       </form>
     </div>
   </div>
@@ -96,10 +97,59 @@ footer{background:#0b1226;color:#cbd4ed;padding:30px 0}.footer-row{display:flex;
 </main>
 <footer><div class="wrap footer-row"><div><div class="brand"><span class="logo">ШҮ</span><span>ШИНЭ ҮЕ — ХӨВГҮҮДИЙН ЗӨВЛӨЛ</span></div><small>Сурагчдын санаа. Хамтын үйлдэл.</small></div><div class="footer-links"><a href="#about">Бидний тухай</a><a href="#initiatives">Санаачилгууд</a><a href="#suggest">Санал илгээх</a></div></div></footer>
 <script>
-const navbtn=document.getElementById('navbtn'),navlinks=document.getElementById('navlinks');
-navbtn.addEventListener('click',()=>{const open=navlinks.classList.toggle('open');navbtn.setAttribute('aria-expanded',String(open));navbtn.textContent=open?'✕':'☰'});
-navlinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navlinks.classList.remove('open');navbtn.setAttribute('aria-expanded','false');navbtn.textContent='☰'}));
-document.getElementById('suggestionForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('name').value.trim()||'Нэр өгөөгүй';const category=document.getElementById('category').value;const idea=document.getElementById('idea').value.trim();const draft=`ШИНЭ ҮЕ СУРГУУЛИЙН ХӨВГҮҮДИЙН ЗӨВЛӨЛД\nНэр: ${name}\nТөрөл: ${category}\nСанал: ${idea}`;const notice=document.getElementById('notice');notice.textContent='Ноорог бэлэн боллоо. Доорх товчоор хуулж аваад зөвлөлд өөр сувгаар илгээнэ үү.';notice.classList.add('show');let old=document.getElementById('copyDraft');if(old)old.remove();const b=document.createElement('button');b.type='button';b.id='copyDraft';b.className='btn secondary';b.style.cssText='margin-top:10px;background:#101a34';b.textContent='Ноорог хуулах';b.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(draft);b.textContent='Хуулагдлаа ✓'}catch{const ta=document.createElement('textarea');ta.value=draft;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();b.textContent='Хуулагдлаа ✓'}});notice.after(b);});
+const navbtn = document.getElementById('navbtn');
+const navlinks = document.getElementById('navlinks');
+
+navbtn.addEventListener('click', () => {
+  const open = navlinks.classList.toggle('open');
+  navbtn.setAttribute('aria-expanded', String(open));
+  navbtn.textContent = open ? '✕' : '☰';
+});
+
+navlinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navlinks.classList.remove('open');
+  navbtn.setAttribute('aria-expanded', 'false');
+  navbtn.textContent = '☰';
+}));
+
+const form = document.getElementById('suggestionForm');
+const notice = document.getElementById('notice');
+const submitButton = document.getElementById('submitButton');
+
+form.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  if (!form.reportValidity()) return;
+
+  submitButton.disabled = true;
+  submitButton.textContent = 'Илгээж байна...';
+  notice.classList.remove('show');
+
+  try {
+    const formData = new FormData(form);
+    const body = new URLSearchParams(formData).toString();
+
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body
+    });
+
+    if (!response.ok) throw new Error('Form submission failed');
+
+    notice.textContent = 'Таны санал амжилттай илгээгдлээ. Баярлалаа!';
+    notice.classList.add('show');
+    form.reset();
+  } catch (error) {
+    notice.textContent = 'Санал илгээж чадсангүй. Интернэтээ шалгаад дахин оролдоно уу.';
+    notice.classList.add('show');
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Санал илгээх ↗';
+  }
+});
 </script>
 </body>
 </html>
